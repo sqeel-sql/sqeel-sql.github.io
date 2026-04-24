@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#0b0d10" />
     <title>sqeel — fast, vim-native SQL client</title>
     <meta
       name="description"
@@ -20,9 +21,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
     <style>
       :root {
         --bg: #0b0d10;
@@ -71,7 +83,11 @@
             rgba(199, 146, 234, 0.05),
             transparent 45%
           );
-        background-attachment: fixed;
+      }
+      @media (min-width: 900px) {
+        body {
+          background-attachment: fixed;
+        }
       }
       a {
         color: var(--accent);
@@ -370,6 +386,8 @@
       section {
         padding: 64px 0;
         border-top: 1px solid var(--border);
+        content-visibility: auto;
+        contain-intrinsic-size: 1px 800px;
       }
       section h2 {
         font-family: var(--mono);
@@ -675,13 +693,19 @@
       }
     </style>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N5PT60107K"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-N5PT60107K');
+      window.addEventListener('load', function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-N5PT60107K';
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-N5PT60107K');
+      });
     </script>
   </head>
   <body>
@@ -971,13 +995,24 @@ url = <span class="str">"mysql://localhost/mydb"</span>
         <div class="paths">
           <div class="path-block">
             <div class="path-root">~/.local/share/sqeel/</div>
-            <div class="path-row"><code>queries/</code><span># auto-saved SQL buffers (per connection)</span></div>
-            <div class="path-row"><code>results/</code><span># last 10 successful results (JSON, per connection)</span></div>
+            <div class="path-row">
+              <code>queries/</code
+              ><span># auto-saved SQL buffers (per connection)</span>
+            </div>
+            <div class="path-row">
+              <code>results/</code
+              ><span># last 10 successful results (JSON, per connection)</span>
+            </div>
           </div>
           <div class="path-block">
             <div class="path-root">~/.config/sqeel/</div>
-            <div class="path-row"><code>config.toml</code><span># editor, LSP, leader key, mouse scroll</span></div>
-            <div class="path-row"><code>conns/</code><span># one .toml per connection</span></div>
+            <div class="path-row">
+              <code>config.toml</code
+              ><span># editor, LSP, leader key, mouse scroll</span>
+            </div>
+            <div class="path-row">
+              <code>conns/</code><span># one .toml per connection</span>
+            </div>
           </div>
         </div>
       </section>
