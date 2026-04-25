@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sqeel-sql.github.io/sitemap.xml
+Sitemap: https://sqeel.kryptic.sh/sitemap.xml
