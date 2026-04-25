@@ -170,6 +170,15 @@
       .siblings-inner .sep {
         color: var(--border-strong);
       }
+      @media (max-width: 560px) {
+        .siblings-inner {
+          gap: 6px 14px;
+          justify-content: center;
+        }
+        .siblings-inner .sep {
+          display: none;
+        }
+      }
 
       /* nav */
       nav.top {
@@ -1133,12 +1142,7 @@ url = <span class="str">"mysql://localhost/mydb"</span>
       <div class="wrap footer-inner">
         <div>sqeel · MIT · built in Rust</div>
         <div>
-          <a href="https://github.com/kryptic-sh/sqeel">github</a> ·
-          <a href="https://www.kryptic.sh/">kryptic.sh</a> ·
-          <a href="https://buffr.kryptic.sh/">buffr</a> ·
-          <a href="https://hjkl.kryptic.sh/">hjkl</a> ·
-          <a href="https://inbx.kryptic.sh/">inbx</a> ·
-          <a href="https://hodl.kryptic.sh/">hodl</a>
+          <a href="https://github.com/kryptic-sh/sqeel">github</a>
         </div>
       </div>
     </footer>
